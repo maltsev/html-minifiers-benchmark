@@ -18,8 +18,8 @@
   "dependencies": {
     "bluebird": "^3.7.2",
     "handlebars": "^4.7.7",
-    "html-minifier-terser": "^5.1.1",
-    "htmlnano": "^1.0.0",
+    "html-minifier-terser": "^6.0.2",
+    "htmlnano": "^1.1.1",
     "node-fetch": "^2.6.1"
   },
   "devDependencies": {
