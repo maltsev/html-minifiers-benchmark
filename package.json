@@ -20,7 +20,7 @@
     "handlebars": "^4.7.7",
     "html-minifier-terser": "^6.0.2",
     "htmlnano": "^1.1.1",
-    "node-fetch": "^2.6.1"
+    "node-fetch": "^3.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.14.3",
