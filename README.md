@@ -7,7 +7,6 @@ Updated: 2025-08-07
 
 | Website | Source (KB) | [html-minifier-terser@7.2.0] | [htmlnano@2.1.2] |
 | ------- | ----------: | -----------------------------------------------------: | -------------------------------: |
-
 | [stackoverflow.blog](https://stackoverflow.blog/) | 344 | 338 | 331 |
 | [github.com](https://github.com/) | 540 | 521 | 446 |
 | [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) | 220 | 210 | 209 |

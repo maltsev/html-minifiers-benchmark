@@ -7,7 +7,6 @@ Updated: {{date}}
 
 | Website | Source (KB) | [html-minifier-terser@{{versions.htmlminifierterser}}] | [htmlnano@{{versions.htmlnano}}] |
 | ------- | ----------: | -----------------------------------------------------: | -------------------------------: |
-
 {{#each stats}}
 | [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.size }} | {{ this.htmlnano.size }} |
 {{/each}}
