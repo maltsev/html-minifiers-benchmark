@@ -1,21 +1,24 @@
 # HTML Minifiers Benchmark
 
-[html-minifier-terser@6.0.2]: https://www.npmjs.com/package/html-minifier-terser
-[htmlnano@1.1.1]: https://www.npmjs.com/package/htmlnano
+Updated: 2025-08-07
 
-| Website                                                     | Source (KB) | [html-minifier-terser@6.0.2] | [htmlnano@1.1.1] |
-| ----------------------------------------------------------- | ----------: | ---------------------------: | ---------------: |
-| [stackoverflow.blog](https://stackoverflow.blog/)           |          90 |                           82 |               76 |
-| [github.com](https://github.com/)                           |         232 |                          203 |              173 |
-| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |          81 |                           76 |               75 |
-| [npmjs.com](https://www.npmjs.com/features)                 |          43 |                           40 |               38 |
-| [tc39.es](https://tc39.es/ecma262/)                         |        6001 |                         5465 |             5459 |
-| **Avg. minify rate**                                        |          0% |                       **9%** |          **13%** |
+[html-minifier-terser@7.2.0]: https://www.npmjs.com/package/html-minifier-terser
+[htmlnano@2.1.2]: https://www.npmjs.com/package/htmlnano
+
+| Website | Source (KB) | [html-minifier-terser@7.2.0] | [htmlnano@2.1.2] |
+| ------- | ----------: | -----------------------------------------------------: | -------------------------------: |
+
+| [stackoverflow.blog](https://stackoverflow.blog/) | 344 | 338 | 331 |
+| [github.com](https://github.com/) | 540 | 521 | 446 |
+| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) | 220 | 210 | 209 |
+| [npmjs.com](https://www.npmjs.com/features) | 55 | 51 | 51 |
+| [tc39.es](https://tc39.es/ecma262/) | 7198 | 6579 | 6571 |
+| **Avg. minify rate** | 0% | **5%** | **8%** |
 
 ## Benchmark
 
 ```
-npm install --production
+npm install --omit=dev
 npm run benchmark
 ```
 
