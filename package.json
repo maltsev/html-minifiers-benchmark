@@ -10,8 +10,8 @@
   "author": "Kirill Maltsev <maltsevkirill@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint . && prettier --check .",
+    "lint:fix": "eslint . --fix && prettier --write .",
     "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
     "benchmark": "node index.js"
   },
@@ -22,7 +22,8 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.0.0",
-    "eslint": "^9.0.0"
+    "eslint": "^9.0.0",
+    "prettier": "^3.6.2"
   },
   "repository": {
     "type": "git",
