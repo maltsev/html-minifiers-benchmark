@@ -2,32 +2,25 @@
   "name": "html-minifiers-benchmark",
   "version": "0.0.0",
   "description": "Benchmark of various HTML minifiers",
-  "main": "index.es6",
+  "type": "module",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "author": "Kirill Maltsev <maltsevkirill@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "lint": "./node_modules/.bin/eslint minifiers/* index.es6",
+    "lint": "eslint .",
     "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
-    "benchmark": "./node_modules/.bin/babel-node index.es6"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ]
+    "benchmark": "node index.js"
   },
   "dependencies": {
-    "bluebird": "^3.7.2",
     "handlebars": "^4.7.7",
     "html-minifier-terser": "^6.0.2",
-    "htmlnano": "^2.0.4",
-    "node-fetch": "^2.6.7"
+    "htmlnano": "^2.0.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.14.3",
-    "@babel/eslint-parser": "^7.14.3",
-    "@babel/node": "^7.14.2",
-    "@babel/preset-env": "^7.14.2",
-    "eslint": "^7.24.0"
+    "eslint": "^8.0.0"
   },
   "repository": {
     "type": "git",

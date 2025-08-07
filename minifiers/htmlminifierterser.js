@@ -1,5 +1,7 @@
 import htmlMinifierTerser from 'html-minifier-terser';
-import Promise from 'bluebird';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const options = {
     removeComments: true,
@@ -17,10 +19,8 @@ const options = {
     removeEmptyElements: false
 };
 
-export default function (html) {
-    return new Promise((resolve) => {
-        resolve(htmlMinifierTerser.minify(html, options));
-    });
+export default async function (html) {
+    return htmlMinifierTerser.minify(html, options);
 }
 
 export const { version } = require('../node_modules/html-minifier-terser/package.json');
