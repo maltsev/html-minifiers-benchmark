@@ -1,5 +1,7 @@
 # HTML Minifiers Benchmark
 
+Updated: {{date}}
+
 [html-minifier-terser@{{versions.htmlminifierterser}}]: https://www.npmjs.com/package/html-minifier-terser
 [htmlnano@{{versions.htmlnano}}]: https://www.npmjs.com/package/htmlnano
 

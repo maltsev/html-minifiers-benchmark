@@ -70,7 +70,8 @@ for (const minifierName of Object.keys(rates)) {
 }
 
 const template = await fsPromise.readFile('./README.template.md', 'utf8');
-const content = handlebars.compile(template)({ stats, rates, versions });
+const date = new Date().toISOString().split('T')[0];
+const content = handlebars.compile(template)({ stats, rates, versions, date });
 await fsPromise.writeFile('./README.md', content, 'utf8');
 
 async function fetchPage(pageUrl) {
