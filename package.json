@@ -1,36 +1,36 @@
 {
-  "name": "html-minifiers-benchmark",
-  "version": "0.0.0",
-  "description": "Benchmark of various HTML minifiers",
-  "type": "module",
-  "main": "index.js",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "author": "Kirill Maltsev <maltsevkirill@gmail.com>",
-  "license": "MIT",
-  "scripts": {
-    "lint": "eslint . && prettier --check .",
-    "lint:fix": "eslint . --fix && prettier --write .",
-    "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
-    "benchmark": "node index.js"
-  },
-  "dependencies": {
-    "handlebars": "^4.7.7",
-    "html-minifier-terser": "^6.0.2",
-    "htmlnano": "^2.0.4"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.0.0",
-    "eslint": "^9.0.0",
-    "prettier": "^3.6.2"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/maltsev/html-minifiers-benchmark.git"
-  },
-  "bugs": {
-    "url": "https://github.com/maltsev/html-minifiers-benchmark/issues"
-  },
-  "homepage": "https://github.com/maltsev/html-minifiers-benchmark"
+    "name": "html-minifiers-benchmark",
+    "version": "0.0.0",
+    "description": "Benchmark of various HTML minifiers",
+    "type": "module",
+    "main": "index.js",
+    "engines": {
+        "node": ">=18.0.0"
+    },
+    "author": "Kirill Maltsev <maltsevkirill@gmail.com>",
+    "license": "MIT",
+    "scripts": {
+        "lint": "eslint . && prettier --check .",
+        "lint:fix": "eslint . --fix && prettier --write .",
+        "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
+        "benchmark": "node index.js"
+    },
+    "dependencies": {
+        "handlebars": "^4.7.7",
+        "html-minifier-terser": "^6.0.2",
+        "htmlnano": "^2.0.4"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.0.0",
+        "eslint": "^9.0.0",
+        "prettier": "^3.6.2"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/maltsev/html-minifiers-benchmark.git"
+    },
+    "bugs": {
+        "url": "https://github.com/maltsev/html-minifiers-benchmark/issues"
+    },
+    "homepage": "https://github.com/maltsev/html-minifiers-benchmark"
 }

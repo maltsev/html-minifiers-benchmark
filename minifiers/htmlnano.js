@@ -5,11 +5,15 @@ const require = createRequire(import.meta.url);
 const safePreset = htmlnano.presets.safePreset;
 
 export default async function (html) {
-    const result = await htmlnano.process(html, {
-        collapseWhitespace: 'aggressive',
-        removeAttributeQuotes: true,
-        removeRedundantAttributes: true
-    }, safePreset);
+    const result = await htmlnano.process(
+        html,
+        {
+            collapseWhitespace: 'aggressive',
+            removeAttributeQuotes: true,
+            removeRedundantAttributes: true,
+        },
+        safePreset
+    );
     return result.html;
 }
 

@@ -9,14 +9,14 @@ export default [
             globals: {
                 console: 'readonly',
                 process: 'readonly',
-                fetch: 'readonly'
-            }
+                fetch: 'readonly',
+            },
         },
         rules: {
-            'indent': ['error', 4],
+            indent: ['error', 4],
             'linebreak-style': ['error', 'unix'],
-            'quotes': ['error', 'single'],
-            'semi': ['error', 'always']
-        }
-    }
+            quotes: ['error', 'single'],
+            semi: ['error', 'always'],
+        },
+    },
 ];

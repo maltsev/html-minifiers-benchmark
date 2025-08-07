@@ -16,7 +16,7 @@ const options = {
     removeScriptTypeAttributes: true,
     removeStyleLinkTypeAttributes: true,
     removeOptionalTags: false,
-    removeEmptyElements: false
+    removeEmptyElements: false,
 };
 
 export default async function (html) {

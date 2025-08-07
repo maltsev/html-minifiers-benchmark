@@ -22,23 +22,23 @@ const promises = urls.map(async (pageUrl) => {
     const pageUrlHostname = url.parse(pageUrl).hostname.replace('www.', '');
     stats[pageUrl] = {
         url: pageUrl,
-        name: pageUrlHostname
+        name: pageUrlHostname,
     };
 
     try {
         const html = await fetchPage(pageUrl);
         stats[pageUrl].source = {
-            size: KB(html.length)
+            size: KB(html.length),
         };
 
         const minifierPromises = Object.keys(minifiers).map(async (minifierName) => {
             const minifierDir = './build/' + minifierName;
             const minifier = minifiers[minifierName].default;
-            
+
             try {
                 const minifiedHtml = await minifier(html);
                 stats[pageUrl][minifierName] = {
-                    size: KB(minifiedHtml.length)
+                    size: KB(minifiedHtml.length),
                 };
                 const minifyRate = (html.length - minifiedHtml.length) / html.length;
                 rates[minifierName].push(minifyRate);
@@ -51,7 +51,7 @@ const promises = urls.map(async (pageUrl) => {
         });
 
         await Promise.all(minifierPromises);
-        
+
         const filepath = './build/' + pageUrlHostname + '.html';
         await fsPromise.writeFile(filepath, html);
     } catch (error) {
@@ -65,7 +65,7 @@ const versions = {};
 for (const minifierName of Object.keys(rates)) {
     const minifierRates = rates[minifierName];
     const sumRate = minifierRates.reduce((prev, current) => prev + current);
-    rates[minifierName] = Math.round(sumRate * 100 / minifierRates.length);
+    rates[minifierName] = Math.round((sumRate * 100) / minifierRates.length);
     versions[minifierName] = minifiers[minifierName].version;
 }
 
