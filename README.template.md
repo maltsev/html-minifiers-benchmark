@@ -14,7 +14,7 @@
 ## Benchmark
 
 ```
-npm install --production
+npm install --omit=dev
 npm run benchmark
 ```
 
