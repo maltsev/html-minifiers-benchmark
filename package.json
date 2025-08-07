@@ -11,6 +11,7 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
     "benchmark": "node index.js"
   },
