@@ -21,7 +21,8 @@
     "htmlnano": "^2.0.4"
   },
   "devDependencies": {
-    "eslint": "^8.0.0"
+    "@eslint/js": "^9.0.0",
+    "eslint": "^9.0.0"
   },
   "repository": {
     "type": "git",
