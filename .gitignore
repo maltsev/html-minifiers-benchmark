@@ -39,3 +39,4 @@ node_modules
 
 # Custom
 /build/
+/package-lock.json

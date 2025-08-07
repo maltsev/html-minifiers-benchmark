@@ -17,8 +17,8 @@
     },
     "dependencies": {
         "handlebars": "^4.7.7",
-        "html-minifier-terser": "^6.0.2",
-        "htmlnano": "^2.0.4"
+        "html-minifier-terser": "latest",
+        "htmlnano": "latest"
     },
     "devDependencies": {
         "@eslint/js": "^9.0.0",
