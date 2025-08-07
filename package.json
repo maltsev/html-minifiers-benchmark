@@ -10,6 +10,7 @@
     "author": "Kirill Maltsev <maltsevkirill@gmail.com>",
     "license": "MIT",
     "scripts": {
+        "postinstall": "npm info htmlnano peerDependencies --json | node -p 'Object.keys(JSON.parse(require(\"fs\").readFileSync(0, \"utf8\"))).join(\"\\n\")' | xargs npm install --no-save",
         "lint": "eslint . && prettier --check .",
         "lint:fix": "eslint . --fix && prettier --write .",
         "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
