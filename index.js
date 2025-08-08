@@ -47,6 +47,7 @@ const promises = urls.map(async (pageUrl) => {
                 const filepath = minifierDir + '/' + pageUrlHostname + '.html';
                 await fsPromise.writeFile(filepath, minifiedHtml);
             } catch (error) {
+                console.error(`Failed to minify: ${pageUrl}`);
                 console.error(error);
             }
         });
@@ -56,6 +57,7 @@ const promises = urls.map(async (pageUrl) => {
         const filepath = './build/' + pageUrlHostname + '.html';
         await fsPromise.writeFile(filepath, html);
     } catch (error) {
+        console.error(`Failed to minify: ${pageUrl}`);
         console.error(error);
     }
 });
