@@ -2,11 +2,11 @@
 
 Updated: {{date}}
 
-[html-minifier-terser@{{versions.htmlminifierterser}}]: https://www.npmjs.com/package/html-minifier-terser
-[htmlnano@{{versions.htmlnano}}]: https://www.npmjs.com/package/htmlnano
+[html-minifier-terser]: https://www.npmjs.com/package/html-minifier-terser/v/{{versions.htmlminifierterser}}
+[htmlnano]: https://www.npmjs.com/package/htmlnano/v/{{versions.htmlnano}}
 
-| Website | Source (KB) | [html-minifier-terser@{{versions.htmlminifierterser}}] | [htmlnano@{{versions.htmlnano}}] |
-| ------- | ----------: | -----------------------------------------------------: | -------------------------------: |
+| Website | Source (KB) | [html-minifier-terser] | [htmlnano] |
+| ------- | ----------: | ---------------------: | ---------: |
 {{#each stats}}
 | [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.size }} | {{ this.htmlnano.size }} |
 {{/each}}
@@ -14,7 +14,7 @@ Updated: {{date}}
 
 ## Benchmark
 
-```
+```bash
 npm install --omit=dev
 npm run benchmark
 ```
