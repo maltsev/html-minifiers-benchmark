@@ -37,10 +37,11 @@ const promises = urls.map(async (pageUrl) => {
 
             try {
                 const minifiedHtml = await minifier(html);
+                const minifyRate = (html.length - minifiedHtml.length) / html.length * 100;
                 stats[pageUrl][minifierName] = {
                     size: KB(minifiedHtml.length),
+                    rate: minifyRate.toFixed(1),
                 };
-                const minifyRate = (html.length - minifiedHtml.length) / html.length;
                 rates[minifierName].push(minifyRate);
 
                 const filepath = minifierDir + '/' + pageUrlHostname + '.html';
@@ -65,7 +66,7 @@ const versions = {};
 for (const minifierName of Object.keys(rates)) {
     const minifierRates = rates[minifierName];
     const sumRate = minifierRates.reduce((prev, current) => prev + current);
-    rates[minifierName] = Math.round((sumRate * 100) / minifierRates.length);
+    rates[minifierName] = (sumRate / minifierRates.length).toFixed(1);
     versions[minifierName] = minifiers[minifierName].version;
 }
 

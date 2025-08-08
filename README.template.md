@@ -8,7 +8,7 @@ Updated: {{date}}
 | Website | Source (KB) | [html-minifier-terser] | [htmlnano] |
 | ------- | ----------: | ---------------------: | ---------: |
 {{#each stats}}
-| [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.size }} | {{ this.htmlnano.size }} |
+| [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.rate }}% | {{ this.htmlnano.rate }}% |
 {{/each}}
 | **Avg. minify rate** | 0% | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlnano }}%** |
 
