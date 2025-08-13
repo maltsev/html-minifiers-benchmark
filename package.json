@@ -14,7 +14,8 @@
         "lint": "eslint . && prettier --check .",
         "lint:fix": "eslint . --fix && prettier --write .",
         "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
-        "benchmark": "node index.js"
+        "benchmark": "node index.js",
+        "postbenchmark": "prettier --write README.md"
     },
     "dependencies": {
         "handlebars": "^4.7.7",
