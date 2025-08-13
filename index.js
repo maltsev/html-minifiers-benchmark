@@ -7,6 +7,7 @@ const urls = JSON.parse(fs.readFileSync('./urls.json', 'utf8'));
 
 const minifiers = {
     htmlminifierterser: await import('./minifiers/htmlminifierterser.js'),
+    htmlminifiernext: await import('./minifiers/htmlminifiernext.js'),
     htmlnano: await import('./minifiers/htmlnano.js'),
 };
 
