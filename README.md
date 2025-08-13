@@ -1,4 +1,4 @@
-# HTML Minifiers Benchmark
+# HTML Minifiers Benchmarks
 
 Updated: 2025-08-13
 
