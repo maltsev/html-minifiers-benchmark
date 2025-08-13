@@ -37,10 +37,10 @@ const promises = urls.map(async (pageUrl) => {
 
             try {
                 const minifiedHtml = await minifier(html);
-                const minifyRate = (html.length - minifiedHtml.length) / html.length * 100;
+                const minifyRate = (html.length - minifiedHtml.length) / html.length;
                 stats[pageUrl][minifierName] = {
                     size: KB(minifiedHtml.length),
-                    rate: minifyRate.toFixed(1),
+                    rate: formatPercentage(minifyRate),
                 };
                 rates[minifierName].push(minifyRate);
 
@@ -68,7 +68,7 @@ const versions = {};
 for (const minifierName of Object.keys(rates)) {
     const minifierRates = rates[minifierName];
     const sumRate = minifierRates.reduce((prev, current) => prev + current);
-    rates[minifierName] = (sumRate / minifierRates.length).toFixed(1);
+    rates[minifierName] = formatPercentage(sumRate / minifierRates.length);
     versions[minifierName] = minifiers[minifierName].version;
 }
 
@@ -94,4 +94,9 @@ function fatalError(error) {
 
 function KB(bytes) {
     return Math.round(bytes / 1024);
+}
+
+function formatPercentage(value) {
+    const p = (value * 100).toFixed(1);
+    return p === '-0.0' ? '0.0' : p;
 }
