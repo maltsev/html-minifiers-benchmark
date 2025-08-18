@@ -1,6 +1,6 @@
 # HTML Minifiers Benchmarks
 
-Updated: 2025-08-17
+Updated: 2025-08-18
 
 [html-minifier-terser]: https://www.npmjs.com/package/html-minifier-terser/v/7.2.0
 [html-minifier-next]: https://www.npmjs.com/package/html-minifier-next/v/1.2.1
@@ -10,12 +10,12 @@ Updated: 2025-08-17
 | ----------------------------------------------------------- | ----------: | ---------------------: | -------------------: | ---------: |
 | [stackoverflow.blog](https://stackoverflow.blog/)           |         171 |                   3.3% |                 3.3% |       8.2% |
 | [github.com](https://github.com/)                           |         541 |                   3.7% |                 3.7% |      18.2% |
-| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         221 |                   4.6% |                 4.6% |       4.9% |
+| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         224 |                   4.6% |                 4.6% |       4.9% |
 | [npmjs.com](https://www.npmjs.com/package/eslint)           |         459 |                   0.5% |                 0.5% |       0.9% |
 | [tc39.es](https://tc39.es/ecma262/)                         |        7195 |                   8.6% |                 8.6% |       8.7% |
 | [reddit.com](https://reddit.com/)                           |         186 |                   0.0% |                 0.0% |       1.6% |
-| [apple.com](https://www.apple.com/)                         |         192 |                   7.4% |                 7.4% |      12.0% |
-| [w3.org](https://www.w3.org/)                               |          48 |                  19.0% |                19.0% |      23.2% |
+| [apple.com](https://www.apple.com/)                         |         189 |                   7.7% |                 7.7% |      12.3% |
+| [w3.org](https://www.w3.org/)                               |          48 |                  19.1% |                19.1% |      23.2% |
 | [weather.com](https://weather.com)                          |        1767 |                   0.2% |                 0.2% |      12.1% |
 | **Avg. minify rate**                                        |          0% |               **5.3%** |             **5.3%** |  **10.0%** |
 
