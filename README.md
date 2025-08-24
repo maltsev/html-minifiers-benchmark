@@ -1,6 +1,6 @@
 # HTML Minifiers Benchmarks
 
-Updated: 2025-08-23
+Updated: 2025-08-24
 
 [html-minifier-terser]: https://www.npmjs.com/package/html-minifier-terser/v/7.2.0
 [html-minifier-next]: https://www.npmjs.com/package/html-minifier-next/v/1.2.1
@@ -10,7 +10,7 @@ Updated: 2025-08-23
 | ----------------------------------------------------------- | ----------: | ---------------------: | -------------------: | ---------: |
 | [stackoverflow.blog](https://stackoverflow.blog/)           |         169 |                   3.3% |                 3.3% |       8.3% |
 | [github.com](https://github.com/)                           |         541 |                   3.7% |                 3.7% |      18.1% |
-| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         219 |                   4.6% |                 4.6% |       5.0% |
+| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         220 |                   4.6% |                 4.6% |       5.0% |
 | [npmjs.com](https://www.npmjs.com/package/eslint)           |         460 |                   0.5% |                 0.5% |       0.9% |
 | [tc39.es](https://tc39.es/ecma262/)                         |        7199 |                   8.5% |                 8.5% |       8.7% |
 | [reddit.com](https://reddit.com/)                           |         186 |                   0.0% |                 0.0% |       1.6% |
