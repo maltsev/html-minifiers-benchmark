@@ -15,11 +15,11 @@ Updated: 2025-09-03
 | [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         220 |                   4.6% |                 4.6% |       4.9% |     6.2% |          2.9% |
 | [npmjs.com](https://www.npmjs.com/package/eslint)           |         460 |                   0.5% |                 0.5% |       0.9% |     3.6% |          0.7% |
 | [tc39.es](https://tc39.es/ecma262/)                         |        7198 |                   8.5% |                 8.5% |       8.7% |     9.5% |          9.1% |
-| [reddit.com](https://reddit.com/)                           |         186 |                   0.0% |                 0.0% |       1.6% |     0.0% |          0.0% |
+| [old.reddit.com](https://old.reddit.com/)                   |         283 |                   2.1% |                 2.1% |       5.6% |     7.8% |          7.4% |
 | [apple.com](https://www.apple.com/)                         |         190 |                   7.6% |                 7.6% |      12.1% |    10.5% |          8.1% |
 | [w3.org](https://www.w3.org/)                               |          49 |                  18.9% |                18.9% |      23.0% |    24.1% |         19.9% |
-| [weather.com](https://weather.com)                          |        1770 |                   0.2% |                 0.2% |      12.1% |    11.9% |          0.6% |
-| **Avg. minify rate**                                        |          0% |               **5.2%** |             **5.2%** |  **10.0%** | **8.7%** |      **5.7%** |
+| [weather.com](https://weather.com)                          |        1898 |                   0.3% |                 0.3% |      12.9% |    11.7% |          0.5% |
+| **Avg. minify rate**                                        |          0% |               **5.5%** |             **5.5%** |  **10.5%** | **9.5%** |      **6.5%** |
 
 ## Benchmark
 
