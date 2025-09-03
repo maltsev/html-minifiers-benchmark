@@ -29,6 +29,14 @@ jobs:
             - name: Run benchmark
               run: npm run benchmark
 
+            - name: Store minification results
+              uses: actions/upload-artifact@v4
+              with:
+                  name: build
+                  path: build/
+                  if-no-files-found: error
+                  retention-days: 14
+
             - name: Commit changes and push to GitHub
               run: |
                   git config --local user.email "github-actions[bot]@users.noreply.github.com"
