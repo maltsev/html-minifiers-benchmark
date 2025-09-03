@@ -9,6 +9,7 @@ const minifiers = {
     htmlminifierterser: await import('./minifiers/htmlminifierterser.js'),
     htmlminifiernext: await import('./minifiers/htmlminifiernext.js'),
     htmlnano: await import('./minifiers/htmlnano.js'),
+    minify: await import('./minifiers/minify.js'),
 };
 
 const stats = {};
