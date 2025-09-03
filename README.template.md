@@ -13,7 +13,7 @@ Updated: {{date}}
 {{#each stats}}
 | [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.rate }}% | {{ this.htmlminifiernext.rate }}% | {{ this.htmlnano.rate }}% | {{ this.minify.rate }}% | {{ this.minifyhtml.rate }}% |
 {{/each}}
-| **Avg. minify rate** | 0% | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlminifiernext }}%** | **{{ rates.htmlnano }}%** | **{{ rates.minify }}%** | **{{ rates.minifyhtml }}%** |
+| **Avg. minify rate** | | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlminifiernext }}%** | **{{ rates.htmlnano }}%** | **{{ rates.minify }}%** | **{{ rates.minifyhtml }}%** |
 
 ## Benchmark
 
