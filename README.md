@@ -14,11 +14,11 @@ Updated: 2025-09-03
 | [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         220 |                   4.6% |                 4.6% |       4.9% |     6.2% |
 | [npmjs.com](https://www.npmjs.com/package/eslint)           |         460 |                   0.5% |                 0.5% |       0.9% |     3.6% |
 | [tc39.es](https://tc39.es/ecma262/)                         |        7198 |                   8.5% |                 8.5% |       8.7% |     9.5% |
-| [reddit.com](https://reddit.com/)                           |         530 |                   3.8% |                 3.8% |       4.6% |     4.5% |
+| [reddit.com](https://reddit.com/)                           |         186 |                   0.0% |                 0.0% |       1.6% |     0.0% |
 | [apple.com](https://www.apple.com/)                         |         190 |                   7.6% |                 7.6% |      12.1% |    10.5% |
 | [w3.org](https://www.w3.org/)                               |          49 |                  18.9% |                18.9% |      23.0% |    24.1% |
-| [weather.com](https://weather.com)                          |        1894 |                   0.3% |                 0.3% |      12.8% |    11.7% |
-| **Avg. minify rate**                                        |          0% |               **5.7%** |             **5.7%** |  **10.4%** | **9.2%** |
+| [weather.com](https://weather.com)                          |        1770 |                   0.2% |                 0.2% |      12.1% |    11.9% |
+| **Avg. minify rate**                                        |          0% |               **5.2%** |             **5.2%** |  **10.0%** | **8.7%** |
 
 ## Benchmark
 
