@@ -5,7 +5,7 @@ Updated: {{date}}
 [html-minifier-terser]: https://www.npmjs.com/package/html-minifier-terser/v/{{versions.htmlminifierterser}}
 [html-minifier-next]: https://www.npmjs.com/package/html-minifier-next/v/{{versions.htmlminifiernext}}
 [htmlnano]: https://www.npmjs.com/package/htmlnano/v/{{versions.htmlnano}}
-[minify]: https://www.npmjs.com/package/@tdewolff/minify/v/{{versions.htmlnano}}
+[minify]: https://www.npmjs.com/package/@tdewolff/minify/v/{{versions.minify}}
 
 | Website | Source (KB) | [html-minifier-terser] | [html-minifier-next] | [htmlnano] | [minify] |
 | ------- | ----------: | ---------------------: | -------------------: | ---------: | -------: |
