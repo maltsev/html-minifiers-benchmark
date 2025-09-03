@@ -15,6 +15,9 @@ Updated: {{date}}
 {{/each}}
 | **Avg. minify rate** | | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlminifiernext }}%** | **{{ rates.htmlnano }}%** | **{{ rates.minify }}%** | **{{ rates.minifyhtml }}%** |
 
+New HTML minifiers are welcome!
+Please submit a PR to add a new minifier to the benchmark, or open an issue to request it.
+
 ## Benchmark
 
 ```bash

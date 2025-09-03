@@ -20,6 +20,9 @@ Updated: 2025-09-03
 | [weather.com](https://weather.com)                          |        1770 |                   0.2% |                 0.2% |      12.1% |    11.9% |          0.6% |
 | **Avg. minify rate**                                        |             |               **5.9%** |             **5.9%** |  **11.0%** | **9.8%** |      **6.4%** |
 
+New HTML minifiers are welcome!
+Please submit a PR to add a new minifier to the benchmark, or open an issue to request it.
+
 ## Benchmark
 
 ```bash
