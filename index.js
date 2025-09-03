@@ -10,6 +10,7 @@ const minifiers = {
     htmlminifiernext: await import('./minifiers/htmlminifiernext.js'),
     htmlnano: await import('./minifiers/htmlnano.js'),
     minify: await import('./minifiers/minify.js'),
+    minifyhtml: await import('./minifiers/minifyhtml.js'),
 };
 
 const stats = {};
