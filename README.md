@@ -1,6 +1,6 @@
 # HTML Minifiers Benchmarks
 
-Updated: 2025-10-02
+Updated: 2025-10-04
 
 [html-minifier-terser]: https://www.npmjs.com/package/html-minifier-terser/v/7.2.0
 [html-minifier-next]: https://www.npmjs.com/package/html-minifier-next/v/2.1.5
@@ -13,12 +13,12 @@ Updated: 2025-10-02
 | [stackoverflow.blog](https://stackoverflow.blog/)           |         167 |                   3.2% |                 3.2% |       8.3% |     4.5% |          3.9% |
 | [github.com](https://github.com/)                           |         548 |                   3.8% |                 3.8% |      18.2% |     8.1% |          6.4% |
 | [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         221 |                   4.6% |                 4.6% |       4.9% |     6.2% |          2.9% |
-| [npmjs.com](https://www.npmjs.com/package/eslint)           |           9 |                   0.3% |                 0.3% |       1.3% |     2.7% |          0.6% |
+| [npmjs.com](https://www.npmjs.com/package/eslint)           |           9 |                   0.3% |                 0.3% |       1.3% |     2.8% |          0.6% |
 | [tc39.es](https://tc39.es/ecma262/)                         |        7226 |                   8.5% |                 8.5% |       8.7% |     9.5% |          9.2% |
-| [apple.com](https://www.apple.com/)                         |         210 |                   6.8% |                 6.8% |      10.8% |     9.5% |          7.2% |
-| [w3.org](https://www.w3.org/)                               |          50 |                  19.4% |                19.4% |      23.5% |    24.7% |         20.7% |
-| [weather.com](https://weather.com)                          |        1855 |                   0.3% |                 0.3% |      11.9% |    11.7% |          0.7% |
-| **Avg. minify rate**                                        |             |               **5.9%** |             **5.9%** |  **10.9%** | **9.6%** |      **6.5%** |
+| [apple.com](https://www.apple.com/)                         |         183 |                   8.0% |                 8.0% |      12.5% |    11.0% |          8.5% |
+| [w3.org](https://www.w3.org/)                               |          50 |                  19.4% |                19.4% |      23.5% |    24.8% |         20.7% |
+| [weather.com](https://weather.com)                          |        1860 |                   0.3% |                 0.3% |      11.9% |    11.6% |          0.7% |
+| **Avg. minify rate**                                        |             |               **6.0%** |             **6.0%** |  **11.2%** | **9.8%** |      **6.6%** |
 
 New HTML minifiers are welcome!
 Please submit a PR to add a new minifier to the benchmark, or open an issue to request it.
