@@ -1,6 +1,6 @@
 # HTML Minifiers Benchmarks
 
-Updated: 2025-11-22
+Updated: 2025-11-23
 
 [html-minifier-terser]: https://www.npmjs.com/package/html-minifier-terser/v/7.2.0
 [html-minifier-next]: https://www.npmjs.com/package/html-minifier-next/v/4.2.2
@@ -15,7 +15,7 @@ Updated: 2025-11-22
 | [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page) |         216 |                   4.6% |                 4.6% |       5.0% |     6.2% |          2.9% |
 | [npmjs.com](https://www.npmjs.com/package/eslint)           |           9 |                   0.3% |                 0.3% |       1.3% |     2.7% |          0.6% |
 | [tc39.es](https://tc39.es/ecma262/)                         |        7231 |                   8.5% |                 8.5% |       8.7% |     9.5% |          9.2% |
-| [apple.com](https://www.apple.com/)                         |         210 |                   7.4% |                 7.4% |      11.4% |    10.1% |          7.9% |
+| [apple.com](https://www.apple.com/)                         |         210 |                   7.5% |                 7.5% |      11.4% |    10.1% |          8.0% |
 | [w3.org](https://www.w3.org/)                               |          50 |                  19.1% |                19.1% |      23.2% |    24.5% |         20.4% |
 | [weather.com](https://weather.com)                          |        2280 |                   0.3% |                 0.3% |      12.2% |    11.1% |          0.6% |
 | **Avg. minify rate**                                        |             |               **6.0%** |             **6.0%** |  **11.0%** | **9.6%** |      **6.6%** |
