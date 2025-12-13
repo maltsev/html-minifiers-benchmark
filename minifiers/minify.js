@@ -1,10 +1,10 @@
-import { string } from '@tdewolff/minify';
+import { minify } from '@tdewolff/minify';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 
-export default function (html) {
-    return string('text/html', html);
+export default async function (html) {
+    return await minify({ data: html, type: 'text/html' });
 }
 
 export const { version } = require('../node_modules/@tdewolff/minify/package.json');
