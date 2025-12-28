@@ -1,13 +1,14 @@
-import htmlnano from 'htmlnano';
+import htmlnano, { presets } from 'htmlnano';
 import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 
 export default async function (html) {
     const result = await htmlnano.process(html, {
-        collapseWhitespace: 'aggressive',
-        removeAttributeQuotes: true,
-        removeRedundantAttributes: true,
+        ...presets.max,
+        removeUnusedCss: {
+            tool: 'purgeCSS',  // uncss fails, so use purgeCSS
+        },
     });
     return result.html;
 }
