@@ -10,15 +10,15 @@ Updated: 2025-12-28
 
 | Website                                                       | Source (KB) | [html-minifier-terser] | [html-minifier-next] | [htmlnano] |  [minify] | [minify-html] |
 | ------------------------------------------------------------- | ----------: | ---------------------: | -------------------: | ---------: | --------: | ------------: |
-| [stackoverflow.blog](https://stackoverflow.blog/)             |         142 |                   3.7% |                32.3% |       7.4% |      4.5% |          4.6% |
-| [github.com](https://github.com/)                             |         549 |                   2.9% |                42.0% |      17.5% |      7.3% |          5.7% |
-| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page)   |         218 |                   4.6% |                 7.7% |       5.0% |      6.2% |          2.9% |
-| [developer.mozilla.org](https://developer.mozilla.org/en-US/) |         109 |                  37.9% |                42.0% |      39.4% |     40.1% |         39.9% |
-| [tc39.es](https://tc39.es/ecma262/)                           |        7243 |                   8.5% |                11.8% |       8.6% |      9.5% |          9.1% |
+| [stackoverflow.blog](https://stackoverflow.blog/)             |         142 |                   3.7% |                32.3% |       7.9% |      4.5% |          4.6% |
+| [github.com](https://github.com/)                             |         549 |                   2.9% |                42.0% |      17.2% |      7.3% |          5.7% |
+| [en.wikipedia.org](https://en.wikipedia.org/wiki/Main_Page)   |         218 |                   4.6% |                 7.7% |       7.6% |      6.2% |          2.9% |
+| [developer.mozilla.org](https://developer.mozilla.org/en-US/) |         109 |                  37.9% |                42.0% |      49.0% |     40.1% |         39.9% |
+| [tc39.es](https://tc39.es/ecma262/)                           |        7243 |                   8.5% |                11.8% |       9.3% |      9.5% |          9.1% |
 | [apple.com](https://www.apple.com/)                           |         210 |                   9.2% |                14.5% |      11.4% |     10.3% |          9.8% |
-| [w3.org](https://www.w3.org/)                                 |          50 |                  19.0% |                24.6% |      23.2% |     24.4% |         20.3% |
-| [weather.com](https://weather.com)                            |        2284 |                   0.3% |                11.5% |      12.2% |     11.1% |          0.6% |
-| **Avg. minify rate**                                          |             |              **10.8%** |            **23.3%** |  **15.6%** | **14.2%** |     **11.6%** |
+| [w3.org](https://www.w3.org/)                                 |          50 |                  19.0% |                24.6% |      23.3% |     24.4% |         20.3% |
+| [weather.com](https://weather.com)                            |        2280 |                   0.3% |                11.5% |      18.7% |     11.1% |          0.6% |
+| **Avg. minify rate**                                          |             |              **10.8%** |            **23.3%** |  **18.1%** | **14.2%** |     **11.6%** |
 
 New HTML minifiers are welcome!
 Please submit a PR to add a new minifier to the benchmark, or open an issue to request it.
