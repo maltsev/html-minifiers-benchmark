@@ -33,7 +33,7 @@
         "@swc/core": "^1.15.7",
         "cssnano": "^7.0.0",
         "postcss": "^8.3.11",
-        "purgecss": "^7.0.2",
+        "purgecss": "^8.0.0",
         "relateurl": "^0.2.7",
         "srcset": "5.0.1",
         "svgo": "^3.0.2",
