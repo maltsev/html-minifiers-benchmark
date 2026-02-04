@@ -4,6 +4,8 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 const options = {
+    cacheCSS: 2000,
+    cacheJS: 1000,
     caseSensitive: false,
     collapseAttributeWhitespace: true,
     collapseBooleanAttributes: true,
@@ -13,7 +15,6 @@ const options = {
     continueOnMinifyError: true,
     continueOnParseError: true,
     decodeEntities: true,
-    html5: true,
     ignoreCustomFragments: [
         '<#[\\s\\S]*?#>',
         '<%[\\s\\S]*?%>',
