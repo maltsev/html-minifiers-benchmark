@@ -16,6 +16,7 @@ const minifiers = {
 
 const stats = {};
 const rates = {};
+const minHtmlLength = 300;
 
 for (const minifierName of Object.keys(minifiers)) {
     rates[minifierName] = [];
@@ -24,13 +25,22 @@ for (const minifierName of Object.keys(minifiers)) {
 
 const promises = urls.map(async (pageUrl) => {
     const pageUrlHostname = url.parse(pageUrl).hostname.replace('www.', '');
-    stats[pageUrl] = {
-        url: pageUrl,
-        name: pageUrlHostname,
-    };
 
     try {
         const html = await fetchPage(pageUrl);
+        if (!html) {
+            console.warn(`${pageUrl} skipped from report.`);
+            return;
+        }
+        if (html.length < minHtmlLength) {
+            console.warn(`${pageUrl} skipped from report: content too short (${html.length} chars).`);
+            return;
+        }
+
+        stats[pageUrl] = {
+            url: pageUrl,
+            name: pageUrlHostname,
+        };
         stats[pageUrl].source = {
             size: KB(html.length),
         };
@@ -82,21 +92,30 @@ const content = handlebars.compile(template)({ stats, rates, versions, date });
 await fsPromise.writeFile('./README.md', content, 'utf8');
 
 async function fetchPage(pageUrl) {
+    const maxRetries = 3;
+    const maxAttempts = maxRetries + 1;
+    const timeoutMs = 10_000;
+
     try {
         const html = await got(pageUrl, {
-            timeout: { request: 10_000 },
-            retry: { limit: 3 },
+            timeout: { request: timeoutMs },
+            retry: { limit: maxRetries },
+            hooks: {
+                beforeRetry: [
+                    (_error, retryCount) => {
+                        const attempt = retryCount;
+                        console.warn(`${pageUrl} fetch failed (attempt ${attempt}/${maxAttempts}); retrying...`);
+                    },
+                ],
+            },
         }).text();
         console.log(pageUrl + ' fetched');
         return html;
     } catch (error) {
-        fatalError(error);
+        console.error(`${pageUrl} fetch failed after ${maxRetries} retries.`);
+        console.error(error);
+        return null;
     }
-}
-
-function fatalError(error) {
-    console.error(error);
-    process.exit(1);
 }
 
 function KB(bytes) {
