@@ -19,6 +19,7 @@
     "dependencies": {
         "@minify-html/node": "latest",
         "@tdewolff/minify": "latest",
+        "got": "^14.4.6",
         "handlebars": "^4.7.7",
         "html-minifier-next": "latest",
         "html-minifier-terser": "latest",

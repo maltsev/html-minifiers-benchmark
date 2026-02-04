@@ -2,6 +2,7 @@ import url from 'url';
 import fs from 'fs';
 import { promises as fsPromise } from 'fs';
 import handlebars from 'handlebars';
+import got from 'got';
 
 const urls = JSON.parse(fs.readFileSync('./urls.json', 'utf8'));
 
@@ -82,9 +83,12 @@ await fsPromise.writeFile('./README.md', content, 'utf8');
 
 async function fetchPage(pageUrl) {
     try {
-        const response = await fetch(pageUrl);
+        const html = await got(pageUrl, {
+            timeout: { request: 10_000 },
+            retry: { limit: 3 },
+        }).text();
         console.log(pageUrl + ' fetched');
-        return await response.text();
+        return html;
     } catch (error) {
         fatalError(error);
     }
