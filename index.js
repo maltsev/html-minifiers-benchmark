@@ -12,6 +12,7 @@ const minifiers = {
     htmlnano: await import('./minifiers/htmlnano.js'),
     minify: await import('./minifiers/minify.js'),
     minifyhtml: await import('./minifiers/minifyhtml.js'),
+    swchtml: await import('./minifiers/swchtml.js'),
 };
 
 const stats = {};

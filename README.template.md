@@ -7,13 +7,14 @@ Updated: {{date}}
 [htmlnano]: https://www.npmjs.com/package/htmlnano/v/{{versions.htmlnano}}
 [minify]: https://www.npmjs.com/package/@tdewolff/minify/v/{{versions.minify}}
 [minify-html]: https://www.npmjs.com/package/@minify-html/node/v/{{versions.minifyhtml}}
+[swc-html]: https://www.npmjs.com/package/@swc/html/v/{{versions.swchtml}}
 
-| Website | Source (KB) | [html-minifier-terser] | [html-minifier-next] | [htmlnano] | [minify] | [minify-html] |
-| ------- | ----------: | ---------------------: | -------------------: | ---------: | -------: | ------------: |
+| Website | Source (KB) | [html-minifier-terser] | [html-minifier-next] | [htmlnano] | [minify] | [minify-html] | [swc-html] |
+| ------- | ----------: | ---------------------: | -------------------: | ---------: | -------: | ------------: | ---------: |
 {{#each stats}}
-| [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.rate }}% | {{ this.htmlminifiernext.rate }}% | {{ this.htmlnano.rate }}% | {{ this.minify.rate }}% | {{ this.minifyhtml.rate }}% |
+| [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.rate }}% | {{ this.htmlminifiernext.rate }}% | {{ this.htmlnano.rate }}% | {{ this.minify.rate }}% | {{ this.minifyhtml.rate }}% | {{ this.swchtml.rate }}% |
 {{/each}}
-| **Avg. minify rate** | | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlminifiernext }}%** | **{{ rates.htmlnano }}%** | **{{ rates.minify }}%** | **{{ rates.minifyhtml }}%** |
+| **Avg. minify rate** | | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlminifiernext }}%** | **{{ rates.htmlnano }}%** | **{{ rates.minify }}%** | **{{ rates.minifyhtml }}%** | **{{ rates.swchtml }}%** |
 
 New HTML minifiers are welcome!
 Please submit a PR to add a new minifier to the benchmark, or open an issue to request it.

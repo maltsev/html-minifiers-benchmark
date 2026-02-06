@@ -18,6 +18,7 @@
     },
     "dependencies": {
         "@minify-html/node": "latest",
+        "@swc/html": "latest",
         "@tdewolff/minify": "latest",
         "got": "^14.4.6",
         "handlebars": "^4.7.7",
