@@ -20,7 +20,7 @@ Higher is better.
 {{#each stats}}
 | [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.rateDisplay }} | {{ this.htmlminifiernext.rateDisplay }} | {{ this.htmlnano.rateDisplay }} | {{ this.minify.rateDisplay }} | {{ this.minifyhtml.rateDisplay }} | {{ this.swchtml.rateDisplay }} |
 {{/each}}
-| **Avg. minify rate** | | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlminifiernext }}%** | **{{ rates.htmlnano }}%** | **{{ rates.minify }}%** | **{{ rates.minifyhtml }}%** | **{{ rates.swchtml }}%** |
+| **Avg. minify rate** | | **{{ rates.htmlminifierterser }}** | **{{ rates.htmlminifiernext }}** | **{{ rates.htmlnano }}** | **{{ rates.minify }}** | **{{ rates.minifyhtml }}** | **{{ rates.swchtml }}** |
 
 New HTML minifiers are welcome!
 Please submit a PR to add a new minifier to the benchmark, or open an issue to request it.

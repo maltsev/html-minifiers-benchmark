@@ -1,6 +1,7 @@
 import url from 'url';
 import fs from 'fs';
 import { promises as fsPromise } from 'fs';
+import { Buffer } from 'node:buffer';
 import handlebars from 'handlebars';
 import got from 'got';
 
@@ -17,11 +18,11 @@ const minifiers = {
 
 const stats = {};
 const rates = {};
-const minHtmlLength = 300;
+const minHtmlBytes = 300;
 const minifierNames = Object.keys(minifiers);
+const comparablePageUrls = [];
 
 for (const minifierName of minifierNames) {
-    rates[minifierName] = [];
     fs.mkdirSync('./build/' + minifierName);
 }
 
@@ -34,8 +35,9 @@ const promises = urls.map(async (pageUrl) => {
             console.warn(`${pageUrl} skipped from report.`);
             return;
         }
-        if (html.length < minHtmlLength) {
-            console.warn(`${pageUrl} skipped from report: content too short (${html.length} chars).`);
+        const sourceBytes = utf8ByteLength(html);
+        if (sourceBytes < minHtmlBytes) {
+            console.warn(`${pageUrl} skipped from report: content too short (${sourceBytes} bytes).`);
             return;
         }
 
@@ -44,7 +46,7 @@ const promises = urls.map(async (pageUrl) => {
             name: pageUrlHostname,
         };
         stats[pageUrl].source = {
-            size: KB(html.length),
+            size: KB(sourceBytes),
         };
 
         const minifierPromises = minifierNames.map(async (minifierName) => {
@@ -52,16 +54,18 @@ const promises = urls.map(async (pageUrl) => {
             const minifier = minifiers[minifierName].default;
 
             try {
-                const minifiedHtml = await minifier(html);
-                const minifyRate = (html.length - minifiedHtml.length) / html.length;
+                const minifiedHtmlRaw = await minifier(html);
+                const minifiedHtml = normalizeHtmlOutput(minifiedHtmlRaw);
+                const minifiedBytes = utf8ByteLength(minifiedHtml);
+                const minifyRate = (sourceBytes - minifiedBytes) / sourceBytes;
                 stats[pageUrl][minifierName] = {
-                    size: KB(minifiedHtml.length),
+                    size: KB(minifiedBytes),
                     rate: formatPercentage(minifyRate),
+                    rateRaw: minifyRate,
                 };
-                rates[minifierName].push(minifyRate);
 
                 const filepath = minifierDir + '/' + pageUrlHostname + '.html';
-                await fsPromise.writeFile(filepath, minifiedHtml);
+                await fsPromise.writeFile(filepath, minifiedHtml, 'utf8');
             } catch (error) {
                 console.error(`Failed to minify: ${pageUrl}`);
                 console.error(error);
@@ -69,10 +73,14 @@ const promises = urls.map(async (pageUrl) => {
         });
 
         await Promise.all(minifierPromises);
+        applyMissingRateFormatting(pageUrl);
         applyBestRateFormatting(pageUrl);
+        if (isComparablePage(pageUrl)) {
+            comparablePageUrls.push(pageUrl);
+        }
 
         const filepath = './build/' + pageUrlHostname + '.html';
-        await fsPromise.writeFile(filepath, html);
+        await fsPromise.writeFile(filepath, html, 'utf8');
     } catch (error) {
         console.error(`Failed to minify: ${pageUrl}`);
         console.error(error);
@@ -82,16 +90,20 @@ const promises = urls.map(async (pageUrl) => {
 await Promise.all(promises);
 
 const versions = {};
-for (const minifierName of Object.keys(rates)) {
-    const minifierRates = rates[minifierName];
-    const sumRate = minifierRates.reduce((prev, current) => prev + current);
-    rates[minifierName] = formatPercentage(sumRate / minifierRates.length);
+for (const minifierName of minifierNames) {
+    const minifierRates = comparablePageUrls.map((pageUrl) => stats[pageUrl][minifierName].rateRaw);
+    if (minifierRates.length === 0) {
+        rates[minifierName] = 'N/A';
+    } else {
+        const sumRate = minifierRates.reduce((prev, current) => prev + current, 0);
+        rates[minifierName] = `${formatPercentage(sumRate / minifierRates.length)}%`;
+    }
     versions[minifierName] = minifiers[minifierName].version;
 }
 
 const template = await fsPromise.readFile('./README.template.md', 'utf8');
 const date = new Date().toISOString().split('T')[0];
-const content = handlebars.compile(template)({ stats, rates, versions, date });
+const content = handlebars.compile(template)({ stats, rates, versions, date, comparablePageCount: comparablePageUrls.length });
 await fsPromise.writeFile('./README.md', content, 'utf8');
 
 async function fetchPage(pageUrl) {
@@ -130,6 +142,29 @@ function formatPercentage(value) {
     return p === '-0.0' ? '0.0' : p;
 }
 
+function utf8ByteLength(value) {
+    return Buffer.byteLength(value, 'utf8');
+}
+
+function normalizeHtmlOutput(value) {
+    if (Buffer.isBuffer(value)) {
+        return value.toString('utf8');
+    }
+    if (value instanceof Uint8Array) {
+        return Buffer.from(value).toString('utf8');
+    }
+    return String(value);
+}
+
+function applyMissingRateFormatting(pageUrl) {
+    const pageStats = stats[pageUrl];
+    for (const minifierName of minifierNames) {
+        if (!pageStats[minifierName]) {
+            pageStats[minifierName] = { rateDisplay: 'N/A' };
+        }
+    }
+}
+
 function applyBestRateFormatting(pageUrl) {
     const pageStats = stats[pageUrl];
     const rowEntries = minifierNames.map((minifierName) => pageStats[minifierName]).filter((entry) => entry && entry.rate !== undefined);
@@ -138,15 +173,27 @@ function applyBestRateFormatting(pageUrl) {
         return;
     }
 
+    for (const entry of rowEntries) {
+        entry.rateDisplay = `${entry.rate}%`;
+    }
+    if (rowEntries.length !== minifierNames.length) {
+        return;
+    }
+
     const bestRate = Math.max(...rowEntries.map((entry) => Number(entry.rate)));
 
     for (const minifierName of minifierNames) {
         const entry = pageStats[minifierName];
-        if (!entry) {
+        if (!entry || entry.rate === undefined) {
             continue;
         }
 
         const rateText = `${entry.rate}%`;
         entry.rateDisplay = Number(entry.rate) === bestRate ? `**${rateText}**` : rateText;
     }
+}
+
+function isComparablePage(pageUrl) {
+    const pageStats = stats[pageUrl];
+    return minifierNames.every((minifierName) => pageStats[minifierName]?.rateRaw !== undefined);
 }
