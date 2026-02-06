@@ -12,7 +12,7 @@ Updated: {{date}}
 | Website | Source (KB) | [html-minifier-terser] | [html-minifier-next] | [htmlnano] | [minify] | [minify-html] | [swc-html] |
 | ------- | ----------: | ---------------------: | -------------------: | ---------: | -------: | ------------: | ---------: |
 {{#each stats}}
-| [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.rate }}% | {{ this.htmlminifiernext.rate }}% | {{ this.htmlnano.rate }}% | {{ this.minify.rate }}% | {{ this.minifyhtml.rate }}% | {{ this.swchtml.rate }}% |
+| [{{ this.name }}]({{ this.url }}) | {{ this.source.size }} | {{ this.htmlminifierterser.rateDisplay }} | {{ this.htmlminifiernext.rateDisplay }} | {{ this.htmlnano.rateDisplay }} | {{ this.minify.rateDisplay }} | {{ this.minifyhtml.rateDisplay }} | {{ this.swchtml.rateDisplay }} |
 {{/each}}
 | **Avg. minify rate** | | **{{ rates.htmlminifierterser }}%** | **{{ rates.htmlminifiernext }}%** | **{{ rates.htmlnano }}%** | **{{ rates.minify }}%** | **{{ rates.minifyhtml }}%** | **{{ rates.swchtml }}%** |
 

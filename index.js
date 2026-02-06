@@ -18,8 +18,9 @@ const minifiers = {
 const stats = {};
 const rates = {};
 const minHtmlLength = 300;
+const minifierNames = Object.keys(minifiers);
 
-for (const minifierName of Object.keys(minifiers)) {
+for (const minifierName of minifierNames) {
     rates[minifierName] = [];
     fs.mkdirSync('./build/' + minifierName);
 }
@@ -46,7 +47,7 @@ const promises = urls.map(async (pageUrl) => {
             size: KB(html.length),
         };
 
-        const minifierPromises = Object.keys(minifiers).map(async (minifierName) => {
+        const minifierPromises = minifierNames.map(async (minifierName) => {
             const minifierDir = './build/' + minifierName;
             const minifier = minifiers[minifierName].default;
 
@@ -68,6 +69,7 @@ const promises = urls.map(async (pageUrl) => {
         });
 
         await Promise.all(minifierPromises);
+        applyBestRateFormatting(pageUrl);
 
         const filepath = './build/' + pageUrlHostname + '.html';
         await fsPromise.writeFile(filepath, html);
@@ -126,4 +128,25 @@ function KB(bytes) {
 function formatPercentage(value) {
     const p = (value * 100).toFixed(1);
     return p === '-0.0' ? '0.0' : p;
+}
+
+function applyBestRateFormatting(pageUrl) {
+    const pageStats = stats[pageUrl];
+    const rowEntries = minifierNames.map((minifierName) => pageStats[minifierName]).filter((entry) => entry && entry.rate !== undefined);
+
+    if (rowEntries.length === 0) {
+        return;
+    }
+
+    const bestRate = Math.max(...rowEntries.map((entry) => Number(entry.rate)));
+
+    for (const minifierName of minifierNames) {
+        const entry = pageStats[minifierName];
+        if (!entry) {
+            continue;
+        }
+
+        const rateText = `${entry.rate}%`;
+        entry.rateDisplay = Number(entry.rate) === bestRate ? `**${rateText}**` : rateText;
+    }
 }
