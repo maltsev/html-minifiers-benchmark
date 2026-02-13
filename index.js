@@ -189,7 +189,7 @@ function applyBestRateFormatting(pageUrl) {
         }
 
         const rateText = `${entry.rate}%`;
-        entry.rateDisplay = Number(entry.rate) === bestRate ? `**${rateText}**` : rateText;
+        entry.rateDisplay = Number(entry.rate) === bestRate ? `**<ins>${rateText}</ins>**` : rateText;
     }
 }
 
