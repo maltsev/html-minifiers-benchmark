@@ -37,3 +37,7 @@ npm run benchmark
 After that `README.md` will be updated with the new benchmark data.
 
 > README.md is generated dynamically from README.template.md. So don't alter it.
+
+## Other benchmarks
+
+- https://github.com/j9t/minifier-benchmarks — by [html-minifier-next](https://github.com/j9t/html-minifier-next) maintainer
