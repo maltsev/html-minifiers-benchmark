@@ -12,9 +12,9 @@
     "scripts": {
         "lint": "eslint . && prettier --check .",
         "lint:fix": "eslint . --fix && prettier --write .",
-        "prebenchmark": "rm -rf ./build/ && mkdir ./build/",
-        "benchmark": "node index.js",
-        "postbenchmark": "prettier --write README.md"
+        "prestart": "rm -rf ./build/ && mkdir ./build/",
+        "start": "node index.js",
+        "poststart": "prettier --write README.md"
     },
     "dependencies": {
         "@minify-html/node": "latest",

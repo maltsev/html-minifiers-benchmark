@@ -31,7 +31,7 @@ Run the benchmark locally:
 
 ```bash
 npm install --omit=dev
-npm run benchmark
+npm start
 ```
 
 After that `README.md` will be updated with the new benchmark data.
