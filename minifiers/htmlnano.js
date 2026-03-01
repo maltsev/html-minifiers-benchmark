@@ -4,12 +4,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 export default async function (html) {
-    const result = await htmlnano.process(html, {
-        ...presets.max,
-        removeUnusedCss: {
-            tool: 'purgeCSS', // uncss fails, so use purgeCSS
-        },
-    });
+    const result = await htmlnano.process(html, presets.max);
     return result.html;
 }
 
