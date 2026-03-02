@@ -1,11 +1,12 @@
-import url from 'url';
-import fs from 'fs';
-import { promises as fsPromise } from 'fs';
+import { URL } from 'url';
+import { readFileSync, rmSync, mkdirSync, promises as fsPromise } from 'fs';
+import { join, resolve } from 'path';
 import { Buffer } from 'node:buffer';
 import handlebars from 'handlebars';
 import got from 'got';
 
-const urls = JSON.parse(fs.readFileSync('./urls.json', 'utf8'));
+const urls = JSON.parse(readFileSync('./urls.json', 'utf8')).map((url) => new URL(url));
+const useCache = process.argv.includes('--cache');
 
 const minifiers = {
     htmlminifierterser: await import('./minifiers/htmlminifierterser.js'),
@@ -22,15 +23,20 @@ const minHtmlBytes = 300;
 const minifierNames = Object.keys(minifiers);
 const comparablePageUrls = [];
 
-for (const minifierName of minifierNames) {
-    fs.mkdirSync('./build/' + minifierName);
+let getPageContents = readPage;
+if (!useCache) {
+    getPageContents = fetchPage;
+    rmSync(buildPath(), { force: true, recursive: true });
+    mkdirSync(buildPath());
+
+    for (const minifierName of minifierNames) {
+        mkdirSync(buildPath(minifierName));
+    }
 }
 
 const promises = urls.map(async (pageUrl) => {
-    const pageUrlHostname = url.parse(pageUrl).hostname.replace('www.', '');
-
     try {
-        const html = await fetchPage(pageUrl);
+        const html = await getPageContents(pageUrl);
         if (!html) {
             console.warn(`${pageUrl} skipped from report.`);
             return;
@@ -43,14 +49,15 @@ const promises = urls.map(async (pageUrl) => {
 
         stats[pageUrl] = {
             url: pageUrl,
-            name: pageUrlHostname,
+            name: pageUrl.hostname,
         };
         stats[pageUrl].source = {
             size: KB(sourceBytes),
         };
 
+        const filepath = getFsFriendlyPath(pageUrl);
         const minifierPromises = minifierNames.map(async (minifierName) => {
-            const minifierDir = './build/' + minifierName;
+            const minifierDir = buildPath(minifierName);
             const minifier = minifiers[minifierName].default;
 
             try {
@@ -64,8 +71,7 @@ const promises = urls.map(async (pageUrl) => {
                     rateRaw: minifyRate,
                 };
 
-                const filepath = minifierDir + '/' + pageUrlHostname + '.html';
-                await fsPromise.writeFile(filepath, minifiedHtml, 'utf8');
+                await fsPromise.writeFile(buildPath(minifierDir, filepath), minifiedHtml, 'utf8');
             } catch (error) {
                 console.error(`Failed to minify: ${pageUrl}`);
                 console.error(error);
@@ -79,8 +85,7 @@ const promises = urls.map(async (pageUrl) => {
             comparablePageUrls.push(pageUrl);
         }
 
-        const filepath = './build/' + pageUrlHostname + '.html';
-        await fsPromise.writeFile(filepath, html, 'utf8');
+        await fsPromise.writeFile(buildPath(filepath), html, 'utf8');
     } catch (error) {
         console.error(`Failed to minify: ${pageUrl}`);
         console.error(error);
@@ -130,6 +135,25 @@ async function fetchPage(pageUrl) {
         console.error(`${pageUrl} fetch failed after ${maxRetries} retries.`);
         console.error(error);
         return null;
+    }
+}
+
+function getFsFriendlyPath(url) {
+    return [url.hostname].concat(url.pathname === '/' ? [] : url.pathname.slice(1).split('/')).join('_') + '.html';
+}
+
+function buildPath(...pathargs) {
+    return resolve('build', ...(pathargs || ['.']));
+}
+
+async function readPage(url) {
+    try {
+        const path = getFsFriendlyPath(url);
+        const txt = await fsPromise.readFile(join('build', path), 'utf-8');
+        console.log(`${join('build', path)} read`);
+        return txt;
+    } catch (err) {
+        console.error(err);
     }
 }
 

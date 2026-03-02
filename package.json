@@ -12,7 +12,6 @@
     "scripts": {
         "lint": "eslint . && prettier --check .",
         "lint:fix": "eslint . --fix && prettier --write .",
-        "prestart": "rm -rf ./build/ && mkdir ./build/",
         "start": "node index.js",
         "poststart": "prettier --write README.md"
     },
