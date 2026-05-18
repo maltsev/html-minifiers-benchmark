@@ -32,7 +32,7 @@
     },
     "peerDependencies": {
         "@swc/core": "^1.15.7",
-        "cssnano": "^7.0.0",
+        "cssnano": "^8.0.0",
         "postcss": "^8.3.11",
         "purgecss": "^8.0.0",
         "relateurl": "^0.2.7",
