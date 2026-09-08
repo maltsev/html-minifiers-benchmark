@@ -197,21 +197,9 @@ function applyBestRateFormatting(pageUrl) {
         return;
     }
 
-    for (const entry of rowEntries) {
-        entry.rateDisplay = `${entry.rate}%`;
-    }
-    if (rowEntries.length !== minifierNames.length) {
-        return;
-    }
-
     const bestRate = Math.max(...rowEntries.map((entry) => Number(entry.rate)));
 
-    for (const minifierName of minifierNames) {
-        const entry = pageStats[minifierName];
-        if (!entry || entry.rate === undefined) {
-            continue;
-        }
-
+    for (const entry of rowEntries) {
         const rateText = `${entry.rate}%`;
         entry.rateDisplay = Number(entry.rate) === bestRate ? `**<ins>${rateText}</ins>**` : rateText;
     }
