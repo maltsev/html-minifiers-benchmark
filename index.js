@@ -36,11 +36,12 @@ if (!useCache) {
 
 const promises = urls.map(async (pageUrl) => {
     try {
-        const html = await getPageContents(pageUrl);
-        if (!html) {
+        const page = await getPageContents(pageUrl);
+        if (!page) {
             console.warn(`${pageUrl} skipped from report.`);
             return;
         }
+        const { html, documentUrl } = page;
         const sourceBytes = utf8ByteLength(html);
         if (sourceBytes < minHtmlBytes) {
             console.warn(`${pageUrl} skipped from report: content too short (${sourceBytes} bytes).`);
@@ -61,7 +62,7 @@ const promises = urls.map(async (pageUrl) => {
             const minifier = minifiers[minifierName].default;
 
             try {
-                const minifiedHtmlRaw = await minifier(html);
+                const minifiedHtmlRaw = await minifier(html, documentUrl);
                 const minifiedHtml = normalizeHtmlOutput(minifiedHtmlRaw);
                 const minifiedBytes = utf8ByteLength(minifiedHtml);
                 const minifyRate = (sourceBytes - minifiedBytes) / sourceBytes;
@@ -117,7 +118,7 @@ async function fetchPage(pageUrl) {
     const timeoutMs = 10_000;
 
     try {
-        const html = await got(pageUrl, {
+        const response = await got(pageUrl, {
             timeout: { request: timeoutMs },
             retry: { limit: maxRetries },
             hooks: {
@@ -128,9 +129,9 @@ async function fetchPage(pageUrl) {
                     },
                 ],
             },
-        }).text();
+        });
         console.log(pageUrl + ' fetched');
-        return html;
+        return { html: response.body, documentUrl: response.url };
     } catch (error) {
         console.error(`${pageUrl} fetch failed after ${maxRetries} retries.`);
         console.error(error);
@@ -151,7 +152,7 @@ async function readPage(url) {
         const path = getFsFriendlyPath(url);
         const txt = await fsPromise.readFile(join('build', path), 'utf-8');
         console.log(`${join('build', path)} read`);
-        return txt;
+        return { html: txt, documentUrl: url.href };
     } catch (err) {
         console.error(err);
     }

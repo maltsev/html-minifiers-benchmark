@@ -3,8 +3,8 @@ import { createRequire } from 'module';
 
 const require = createRequire(import.meta.url);
 
-export default async function (html) {
-    const result = await htmlnano.process(html, presets.max);
+export default async function (html, documentUrl) {
+    const result = await htmlnano.process(html, { ...presets.max, minifyUrls: documentUrl || false, skipConfigLoading: true });
     return result.html;
 }
 

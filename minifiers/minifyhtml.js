@@ -5,7 +5,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 export default function (html) {
-    return minifyHtml.minify(Buffer.from(html), {});
+    return minifyHtml.minify(Buffer.from(html), { minify_css: true, minify_js: true });
 }
 
 export const { version } = require('../node_modules/@minify-html/node/package.json');

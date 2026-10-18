@@ -4,16 +4,22 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 
 const options = {
-    minify_js: true,
-    minify_css: true,
-    collapseWhitespaces: 'all',
-    remove_comments: true,
-    remove_empty_attributes: true,
-    remove_redundant_attributes: true,
-    collapse_boolean_attributes: true,
-    normalize_attributes: true,
-    remove_empty_metadata_elements: true,
-    minify_conditional_comments: true,
+    minifyJs: true,
+    minifyCss: true,
+    minifyJson: true,
+    forceSetHtml5Doctype: true,
+    collapseWhitespaces: 'smart',
+    removeComments: true,
+    removeEmptyAttributes: true,
+    removeRedundantAttributes: 'all',
+    collapseBooleanAttributes: true,
+    normalizeAttributes: true,
+    removeEmptyMetadataElements: true,
+    minifyConditionalComments: true,
+    tagOmission: true,
+    quotes: false,
+    sortAttributes: true,
+    sortSpaceSeparatedAttributeValues: true,
 };
 
 export default async function (html) {
